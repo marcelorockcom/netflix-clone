@@ -1,5 +1,112 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-9');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root{
+    --color-dark: #141414;
+}
+
+html{
+    font-family: 'Helvetica Neue', 'Segoe UI', Roboto, Ubuntu, sans-serif;
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+    background-color: var(--color-dark);
+    color: #fff;
+}
+
+.container{
+    max-width: 125rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background: linear-gradient(180deg,  var(--color-dark),  rgba(0, 0, 0, 0));
+}
+
+.header-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+#menu{
+    display: flex;
+    align-items: center;
+}
+
+#menu{
+    display: flex;
+    align-items: center;
+}
+
+#menu h1 a{
+    color: #ffffff00;
+}
+
+#menu h1 > a::after{
+    content: '';
+    display: block;
+    width: 9.25rem;
+    height: 2.5rem;
+    background-image: url(../img/netflix-logo.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.main-menu{
+    margin-left: 3rem;
+}
+
+.main-menu li{
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.main-menu li a{
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+#search-account{
+    display: flex;
+    align-items: center;
+}
+
+#search-account > div{
+    margin-left: 2.5rem;
+}
+
+.input-search{
+    display: none;
+}
+
+#account-menu{
+    display: none;
+}
+
+#hero{
+    background: var(--color-dark) url(../img/cover.jpg) no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+#hero .row{
+    display: flex;
+    align-items: center;
+    height: 100vh;
 }
