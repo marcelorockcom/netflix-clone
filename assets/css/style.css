@@ -9,6 +9,8 @@
 
 :root{
     --color-dark: #141414;
+    --black-transp-1: #0000008c;
+    --black-transp-2: #000000a9;
 }
 
 html{
@@ -80,9 +82,29 @@ header{
     background-size: contain;
 }
 
-.main-menu{
+.navegar{
+    display: none;
+    font-size: 1.3rem;
+    position: relative;
+}
+
+.navegar::after{
+    content: '';
+    border-color: #fff transparent transparent;
+    border-width: .4rem .4rem 0;
+    border-style: solid;
+    display: block;
+    width: .1rem;
+    height: auto;
+    position: absolute;
+    left: 6rem;
+    top: .8rem;
+}
+
+.main-menu, .navegar{
     margin-left: 3rem;
 }
+
 
 .main-menu li{
     display: inline-block;
@@ -90,7 +112,7 @@ header{
 }
 
 .main-menu li a{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #fff;
 }
 
@@ -139,7 +161,7 @@ header{
     display: none;
     background-color: var(--color-dark);
     border: 1px solid #ffffff27;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem;
     position: absolute;
     right: -3rem;
     top: 5rem;
@@ -217,4 +239,70 @@ header{
     display: flex;
     align-items: center;
     height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 884px){
+    .navegar{
+        display: block;
+        cursor: pointer;
+    }
+
+    .main-menu{
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 30rem;
+        z-index: 2;
+        position: absolute;
+        top: 8rem;
+        border-top: 1px solid #fff;
+        transition: all 3s ease 3s;
+    }
+
+    .main-menu li{
+        padding: 1rem;
+        margin-left: 0;
+        background-color: var(--black-transp-2);
+    }
+
+    .main-menu li:hover{
+        background-color: var(--black-transp-1);
+    }
+    
+    .main-menu li a{
+        font-size: 1.15rem;
+        color: #fff;
+    }
+
+    .main-menu::before{
+        content: '';
+        border-color: #fff transparent transparent;
+        border-width: .4rem .4rem 0;
+        border-style: solid;
+        display: block;
+        width: .1rem;
+        height: auto;
+        position: absolute;
+        left: 14.5rem;
+        top: -1.5rem;
+        padding-top: 1rem;
+        transform: rotateX(180deg);
+    }
+}
+
+@media (max-width: 1200px){
+    .main-menu li a{
+        font-size: 1.15rem;
+        color: #fff;
+    }
 }
