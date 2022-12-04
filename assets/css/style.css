@@ -11,6 +11,7 @@
     --color-dark: #141414;
     --black-transp-1: #0000008c;
     --black-transp-2: #000000a9;
+    --black-transp-3: #777777a4;
 }
 
 html{
@@ -25,6 +26,10 @@ body{
     color: #fff;
 }
 
+p{
+    padding: 2rem 0;
+}
+
 i{
     font-size: 2rem;
 }
@@ -37,9 +42,47 @@ img{
     border-radius: 0.25rem;
 }
 
+.d-block{
+    display: block !important;
+}
+
+.d-none{
+    display: none !important;
+}
+
 .container{
     width: 94%;
     margin: 0 auto;
+}
+
+.col-4{
+    width: 33.3%;
+}
+
+.btn{
+    font-family: 'Helvetica Neue', 'Segoe UI', Roboto, Ubuntu, sans-serif;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    outline: none;
+    border: none;
+    margin-right: 1rem;
+}
+
+.btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity .2s ease-in-out;
+}
+
+.btn-light{
+    color: #000;
+    background-color: #fff;
+}
+
+.btn-dark{
+    color: #fff;
+    background-color: var(--black-transp-3);
 }
 
 header{
@@ -48,6 +91,12 @@ header{
     z-index: 1;
     width: 100%;
     background: linear-gradient(180deg,  var(--color-dark),  rgba(0, 0, 0, 0));
+    transition: background 1s ease;
+}
+
+.header-scrolled{
+    background-color: var(--color-dark);
+    transition: background .5s ease;
 }
 
 .header-menu{
@@ -205,10 +254,6 @@ header{
     transform: rotateX(180deg);
 }
 
-#account-menu::before:hover{
-    display: block;
-}
-
 #account-menu i{
     font-size: 2.2rem;
     color: #ffffff50;
@@ -235,13 +280,135 @@ header{
     min-height: 100vh;
 }
 
+#hero .trailer-wrapper{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+}
+
+#hero .trailer{
+    width: 150%;
+    height: auto;
+    margin-top: -20rem;
+    margin-left: -25%;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+#hero .trailer-hide{
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
 #hero .row{
     display: flex;
     align-items: center;
     height: 100vh;
 }
 
+#hero .row .hero-container{
+    position: absolute;
+    bottom: 25vh;
+}
 
+#hero .row .hero-container a{
+    display: inline-block;
+}
+
+#hero .row .hero-container button{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+#hero .row .hero-container i{
+    margin-right: 1rem;
+}
+
+#hero .title-hero-start{
+    font-size: 12rem;
+    animation: title-hero 1s ease-in-out 5s;
+}
+
+#hero .title-hero-end{
+    font-size: 5rem;
+    transform: translate3d(0, 6rem, 0);
+}
+
+#hero .sinopese{
+    opacity: 1;
+    animation: p-hero 1s ease-in-out 5s;
+}
+
+#hero .p-hero-end{
+    transform: translate3d(0, 6rem, 0);
+    transform-origin: left;
+    visibility: hidden;
+}
+
+#replay-parental{
+    position: absolute;
+    bottom: 25vh;
+    right: 0;
+    display: flex;
+}
+
+#replay-parental p{
+    padding: 0 6rem .0 .7rem;
+    background-color: var(--black-transp-1);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid #fff;
+}
+
+#replay-parental span{
+    padding: .5rem;
+    margin-left: .5rem;
+    border-radius: .25rem;
+    background-color: red;
+}
+
+#replay-parental button{
+    margin-right: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+}
+
+#replay-parental .replay{
+    display: none;
+}
+
+#replay-parental button i{
+    padding: 1rem;
+    border-radius: 50%;
+    color: #fff;
+    border: 1px double #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+#replay-parental i:hover{
+    background-color: #ffffff27;
+    transition: all .3s ease;
+}
+
+@keyframes title-hero {
+    100%{
+        font-size: 5rem;
+        transform: translate3d(0, 6rem, 0);
+    }
+}
+
+@keyframes p-hero {
+    100%{
+        transform: translate3d(0, 6rem, 0);
+        transform-origin: left;
+        opacity: 0;
+    }
+}
 
 
 
@@ -277,6 +444,7 @@ header{
 
     .main-menu li:hover{
         background-color: var(--black-transp-1);
+        cursor: pointer;
     }
     
     .main-menu li a{
