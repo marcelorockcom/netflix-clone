@@ -54,8 +54,7 @@ function hideMenus(el) {
     }, 1000)
 }
 
-/* hero-section */
-
+/* Hero Section */
 const heroTrailer = document.querySelector('#hero .trailer')
 const heroTitle = document.querySelector('#hero h2')
 const heroSinopse = document.querySelector('#hero .sinopese')
@@ -89,20 +88,154 @@ function muted(btn, video){
 }
 
 heroTrailer.addEventListener('pause', function(){
-    toggleClass(heroReplay, 'd-block')
-    toggleClass(heroMute, 'd-none')
-    toggleClass(heroTrailer, 'trailer-hide')
-    toggleClass(heroTitle, 'title-hero-end')
-    toggleClass(heroSinopse, 'p-hero-end')
+    toogleClassTrailer()
     heroTitle.style.transition = "all 1s ease-in-out"
     heroSinopse.style.transition = "all 1s ease-in-out"
 })
 
 heroReplay.addEventListener('click', function(){
     heroTrailer.play()
+    toogleClassTrailer()
+})
+
+function toogleClassTrailer(){
     toggleClass(heroReplay, 'd-block')
     toggleClass(heroMute, 'd-none')
     toggleClass(heroTrailer, 'trailer-hide')
     toggleClass(heroTitle, 'title-hero-end')
     toggleClass(heroSinopse, 'p-hero-end')
+}
+
+
+/* Sliders Sections */ 
+const secSlider = document.querySelectorAll('.sec-slider')
+const sliderInd = document.querySelectorAll('.slider-indicators')
+const container = document.querySelector('.container')
+
+secSlider.forEach(secFilmes =>{
+    let liFilmes = secFilmes.querySelectorAll('.filmes-slider').length / getQtdSlides()
+    let slider = secFilmes.querySelector('.slider')
+    let marginSlider = parseFloat(window.getComputedStyle(slider).getPropertyValue('margin-left'))
+    criaIndicSlider(secFilmes, liFilmes)
+    criaItens(secFilmes, liFilmes)
+    let itens = slider.querySelectorAll('.item')
+    const btnNext = secFilmes.querySelector('.next')
+    const btnPrevious = secFilmes.querySelector('.previous')
+    btnNext.addEventListener('click', x => nextSlide(slider, secFilmes, liFilmes, btnPrevious, marginSlider))
+    btnPrevious.addEventListener('click', x => previouSlide(slider, secFilmes, liFilmes, itens, marginSlider))
+    criaClones(slider, itens)
 })
+
+function criaIndicSlider(secFilmes, liFilmes){
+    for(let i = 1; i <= liFilmes; i++){
+        let li = document.createElement('li')
+        if(i === 1){
+            li.className = "active"
+        }
+        secFilmes.querySelector('.slider-indicators').appendChild(li)
+    }
+}
+
+function criaItens(secFilmes, liFilmes){
+    for(let i = 0; i < liFilmes; i++){
+        let filmesDiv = secFilmes.querySelectorAll('.filmes-slider')
+        let divItens = document.createElement('div')
+        divItens.className = "item"
+        let sliderWrapper = secFilmes.querySelector('.slider')
+        for(let filme = 0; filme < getQtdSlides(); filme++){
+            let filmeSlide = filmesDiv[filme].cloneNode(true)
+            divItens.appendChild(filmeSlide)
+            sliderWrapper.removeChild(filmesDiv[filme])
+        }
+        sliderWrapper.appendChild(divItens)        
+    }
+}
+
+function criaClones(slider, itens){
+    let primeiro = itens[0].cloneNode(true)
+    let segundo = itens[1].cloneNode(true)
+    slider.appendChild(primeiro)
+    slider.appendChild(segundo)
+}
+
+function updateIndicNext(slider, secFilmes, liFilmes){
+    let dataSlider = getDataSlider(slider)
+    let indicadores = secFilmes.querySelectorAll('.slider-indicators li')
+    indicadores.forEach(x => x.classList.remove('active'))
+    if(dataSlider === liFilmes - 1){
+        slider.setAttribute('data-slider', 0)
+        indicadores[0].classList.add('active')
+    }else{
+        slider.setAttribute('data-slider', ++dataSlider)
+        indicadores[dataSlider].classList.add('active')
+    }
+}
+function updateIndicPrev(slider, secFilmes, liFilmes){
+    let dataSlider = getDataSlider(slider)
+    let indicadores = secFilmes.querySelectorAll('.slider-indicators li')
+    indicadores.forEach(x => x.classList.remove('active'))
+    if(dataSlider <= 0){
+        slider.setAttribute('data-slider', liFilmes - 1)
+        indicadores[liFilmes - 1].classList.add('active')
+    }else{
+        slider.setAttribute('data-slider', --dataSlider)
+        indicadores[dataSlider].classList.add('active')
+    }
+}
+
+function getWidthCont(){
+    return parseFloat(window.getComputedStyle(container, null).width)
+}
+
+function getDataSlider(slider){
+    return parseInt(slider.getAttribute("data-slider"))
+}
+
+function getQtdSlides(){
+    let width = window.innerWidth
+    if(width >= 1200) return 5
+    if(width >= 800) return 4
+    return 2
+}
+
+function nextSlide(slider, secFilmes, liFilmes, btnPrevious, marginSlider){
+    let marginAtual = parseFloat(slider.style.marginLeft) || 0
+    let tamanhoTela = getWidthCont() - marginAtual
+    updateIndicNext(slider, secFilmes, liFilmes)
+    moveSlider(slider, tamanhoTela, '-')
+    slider.style.transform = `translateX(${marginSlider}px)`
+    if(slider.getAttribute('data-repeat') === "true"){
+        setTimeout(function(){
+            slider.removeAttribute('style')
+            slider.style.marginLeft = `-${getWidthCont()}px`
+            slider.style.transform = `translateX(${marginSlider}px)`
+        }, 500)
+    }
+    if(getDataSlider(slider) === 0){
+        slider.setAttribute('data-repeat', 'true')
+    }else{
+        slider.setAttribute('data-repeat', 'false')
+    }
+    btnPrevious.classList.add('d-block')
+}
+
+function previouSlide(slider, secFilmes, liFilmes, itens, marginSlider){
+    let marginAtual = parseFloat(slider.style.marginLeft)
+    updateIndicPrev(slider, secFilmes, liFilmes)
+    moveSlider(slider, marginAtual + getWidthCont())
+    slider.addEventListener('transitionend', function(){
+        if(getDataSlider(slider) === 0){
+            slider.removeAttribute('style')
+            slider.style.marginLeft = `-${getWidthCont() * itens.length}px`
+            slider.style.transform = `translateX(${marginSlider}px)`
+            slider.setAttribute('data-repeat', 'true')
+        }else{
+            slider.setAttribute('data-repeat', 'false')
+        }
+    })
+}
+
+function moveSlider(slider, move, direction = ''){
+    slider.style.transition = "all .5s ease"
+    slider.style.marginLeft = `${direction}${move}px`
+}

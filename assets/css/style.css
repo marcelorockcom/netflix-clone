@@ -30,6 +30,11 @@ p{
     padding: 2rem 0;
 }
 
+h2{
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
 i{
     font-size: 2rem;
 }
@@ -42,6 +47,28 @@ img{
     border-radius: 0.25rem;
 }
 
+.container{
+    width: 93vw;
+    margin: 0 auto;
+}
+
+.row{
+    display: flex;
+}
+
+.col-6{
+    width: 50%;
+    position: relative;
+}
+
+.col-4{
+    width: 33.3%;
+}
+
+.col-3{
+    width: 25%;
+}
+
 .d-block{
     display: block !important;
 }
@@ -50,13 +77,16 @@ img{
     display: none !important;
 }
 
-.container{
-    width: 94%;
-    margin: 0 auto;
+.d-inline{
+    display: inline !important;
 }
 
-.col-4{
-    width: 33.3%;
+.d-flex{
+    display: flex !important;
+}
+
+.text-right{
+    text-align: right;
 }
 
 .btn{
@@ -88,7 +118,7 @@ img{
 header{
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 9;
     width: 100%;
     background: linear-gradient(180deg,  var(--color-dark),  rgba(0, 0, 0, 0));
     transition: background 1s ease;
@@ -229,6 +259,10 @@ header{
     margin-left: 1rem;
 }
 
+#account-menu li:last-child a{
+    margin-left: 0;
+}
+
 #account-menu i{
     font-size: 2.2rem;
     color: #ffffff50;
@@ -282,9 +316,16 @@ header{
 
 #hero .trailer-wrapper{
     width: 100%;
-    height: 100vh;
     overflow: hidden;
     position: absolute;
+}
+
+#hero .shadow{
+    background: linear-gradient(0, var(--color-dark) 30%, #00000000 50%);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
 }
 
 #hero .trailer{
@@ -337,6 +378,7 @@ header{
 }
 
 #hero .sinopese{
+    font-family: Arial, Helvetica, sans-serif;
     opacity: 1;
     animation: p-hero 1s ease-in-out 5s;
 }
@@ -410,15 +452,179 @@ header{
     }
 }
 
+.sec-slider{
+    margin-bottom: 4rem;
+}
 
+.filmes{
+    z-index: 3;
+    margin-top: -13rem;
+    padding-top: 5rem;
+    background: linear-gradient(0, var(--color-dark), #00000000);
+    width: 100%;
+}
 
+.slider-wrapper{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
 
+.slider{
+    display: inline-flex;
+    margin-left: 3vw;
+}
 
+.filmes-slider{
+    width: 18.1vw;
+    margin-right: .7rem;
+}
 
+.filmes-slider img:hover{
+    opacity: .5;
+}
 
+.filmes-slider img{
+    width: 100%;
+}
 
+.controllers{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
 
-@media (max-width: 884px){
+.controllers button{
+    height: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 0 1.5rem;
+    opacity: .8;
+}
+
+.controllers button:hover{
+    cursor: pointer;
+}
+
+.controllers button.previous{
+    display: none;
+    position: absolute;
+    left: 0;
+    background: linear-gradient(90deg, var(--color-dark), #00000000);
+}
+
+.controllers button.next{
+    position: absolute;
+    right: 0;
+    background: linear-gradient(270deg, var(--color-dark), #00000000);
+}
+
+.controllers button i{
+    color: transparent;
+    font-size: 3rem;
+    transform: scaleY(1.5);
+    transition: color .3s ease;
+}
+
+.controllers button i:hover{
+    transform: scale3d(1.5, 2.5, .1);
+    transition: transform .3s ease;
+}
+
+.slider-wrapper:hover .controllers button i{
+    color: #fff;
+}
+
+.slider-indicators li{
+    display: inline-flex;
+}
+
+.slider-indicators li::before{
+    content: '';
+    width: 1.5rem;
+    height: .3rem;
+    display: block;
+    margin-left: 0.3rem;    
+}
+
+.sec-slider:hover li::before{ 
+    background-color: #ffffff27;
+    transition: background .3s ease;
+}
+
+.sec-slider:hover li.active::before{ 
+    background-color: #ffffff50;
+}
+
+.sec-slider .slider .item{ 
+    display: flex;
+    transition: all .5s ease;
+}
+
+footer{
+    margin: 13rem auto 3rem;
+    width: 75%;
+}
+
+footer .social-media{
+    display: flex;
+}
+
+footer .social-media li{
+    margin-right: 3rem;
+}
+
+footer .menu-footer li{
+    margin-top: 1.5rem;
+}
+
+footer .menu-footer a{
+    font-size: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}
+
+footer .menu-footer a:hover{
+    text-decoration: underline;
+}
+
+footer .disclaimer{
+    margin-top: 5rem;
+    font-size: 1.5rem;
+    color: gray;
+}
+
+@media (max-width: 800px){
+
+    html{
+        font-size: .5rem;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    p {
+        padding: 1rem 0;
+        font-size: 1.3rem;
+    }
+
+    .col-4 {
+        width: 100%;
+    }
+    
+    .col-3 {
+        width: 50%;
+    }
+
+    
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+    
     .navegar{
         display: block;
         cursor: pointer;
@@ -466,11 +672,215 @@ header{
         padding-top: 1rem;
         transform: rotateX(180deg);
     }
+
+    #hero {
+        background: var(--color-dark) url(../img/cover.jpg) no-repeat center center;
+        background-size: cover;
+        min-height: 50vh;
+        margin-top: -4rem;
+    }
+    
+    #hero i {
+        font-size: 1.2rem;
+    }
+
+    #hero .row {
+        height: initial;
+        position: relative;
+        height: 50vh;
+    }
+
+    #hero .row .hero-container {
+        position: absolute;
+        bottom: 10rem;
+    }
+
+    #hero .title-hero-start {
+        font-size: 5rem;
+        animation: title-hero 1s ease-in-out 5s;
+    }
+    
+    #hero .title-hero-end {
+        font-size: 3rem;
+    }
+
+    #hero .trailer {
+        width: 120%;
+        margin-top: -1rem;
+        margin-left: -10%;
+    }
+
+    #replay-parental {
+        bottom: 13vh;
+        margin-right: -1rem;
+    }
+
+    #replay-parental button i {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #replay-parental p {
+        padding: 0 6rem .0 0.7rem;
+        font-size: 1rem;
+    }
+
+    .filmes {
+        margin-top: -9rem;
+        padding-top: 2rem;
+    }
+
+    .slider {
+        display: inline-flex;
+        margin-left: 2vw;
+    }
+
+    .filmes-slider{
+        width: 45.35vw;
+    }
+
+    .controllers button i {
+        font-size: 1.5rem;
+    }
+
+    footer{
+        margin: 13rem auto 3rem;
+        width: 93%;
+    }
+
+    footer .menu-footer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    footer .social-media i{
+        font-size: 2.5rem;
+    }
+
+    footer .menu-footer a {
+        font-size: 1.6rem;
+    }
+
+
+    @keyframes title-hero {
+        100%{
+            font-size: 3rem;
+            transform: translate3d(0, 6rem, 0);
+        }
+    }
+
+
 }
 
-@media (max-width: 1200px){
+@media (min-width: 800px) and (max-width: 1200px){
+
     .main-menu li a{
-        font-size: 1.15rem;
+        font-size: 1rem;
         color: #fff;
     }
+
+    html{
+        font-size: .7rem;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    p {
+        padding: 1rem 0;
+        font-size: 1.3rem;
+    }
+
+    .col-4 {
+        width: 100%;
+    }
+    
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    #hero {
+        background: var(--color-dark) url(../img/cover.jpg) no-repeat center center;
+        background-size: cover;
+        min-height: 50vh;
+        margin-top: -4rem;
+    }
+    
+    #hero i {
+        font-size: 1.2rem;
+    }
+
+    #hero .row {
+        height: initial;
+        position: relative;
+        height: 100vh;
+    }
+
+    #hero .row .hero-container {
+        position: absolute;
+        bottom: 10rem;
+    }
+
+    #menu h1 > a::after {
+        width: 7.25rem;
+    }
+
+    #hero .title-hero-start {
+        font-size: 5rem;
+        animation: title-hero 1s ease-in-out 5s;
+    }
+    
+    #hero .title-hero-end {
+        font-size: 3rem;
+    }
+
+    #hero .trailer {
+        width: 150%;
+        margin-top: -6rem;
+        margin-left: -25%;
+    }
+
+    #replay-parental {
+        bottom: 19vh;
+        margin-right: -3rem;
+    }
+
+    #replay-parental button i {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #replay-parental p {
+        padding: 0 6rem .0 0.7rem;
+        font-size: 1rem;
+    }
+
+    .filmes {
+        margin-top: -9rem;
+        padding-top: 2rem;
+    }
+
+    .slider {
+        display: inline-flex;
+        margin-left: 2vw;
+    }
+
+    .filmes-slider{
+        width: 22.3vw;
+    }
+
+    .controllers button i {
+        font-size: 1.5rem;
+    }
+
+    @keyframes title-hero {
+        100%{
+            font-size: 3rem;
+            transform: translate3d(0, 6rem, 0);
+        }
+    }
+
 }
