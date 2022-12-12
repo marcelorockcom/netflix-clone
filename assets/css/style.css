@@ -14,6 +14,14 @@
     --black-transp-3: #777777a4;
 }
 
+div,
+img,
+span,
+button,
+a{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 html{
     font-family: 'Helvetica Neue', 'Segoe UI', Roboto, Ubuntu, sans-serif;
     font-size: 62.5%;
@@ -118,7 +126,7 @@ img{
 header{
     position: fixed;
     top: 0;
-    z-index: 9;
+    z-index: 10;
     width: 100%;
     background: linear-gradient(180deg,  var(--color-dark),  rgba(0, 0, 0, 0));
     transition: background 1s ease;
@@ -782,7 +790,7 @@ footer .disclaimer{
     }
 
     .filmes {
-        margin-top: 4rem;
+        margin-top: 6rem;
         padding-top: 2rem;
     }
 
