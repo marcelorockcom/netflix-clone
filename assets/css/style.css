@@ -308,33 +308,58 @@ header{
     display: block;
 }
 
-#hero{
-    background: var(--color-dark) url(../img/cover.jpg) no-repeat center center;
-    background-size: cover;
-    min-height: 100vh;
+.trailer{
+    background-color: var(--color-dark);
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: -4% auto -8%;
 }
 
-#hero .trailer-wrapper{
-    width: 100%;
+
+.cover{
+    background-color: var(--color-dark);
     overflow: hidden;
     position: absolute;
-}
-
-#hero .shadow{
-    background: linear-gradient(0, var(--color-dark) 30%, #00000000 50%);
-    position: absolute;
-    top: 0;
-    height: 100%;
+    display: block;
     width: 100%;
+    margin: -4% auto -8%;
 }
 
-#hero .trailer{
-    width: 150%;
-    height: auto;
-    margin-top: -20rem;
-    margin-left: -25%;
-    opacity: 1;
-    transition: opacity 1s ease;
+.cover img{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.shadow{
+    background: linear-gradient(0, var(--color-dark) 0%, #00000000 50%);
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.container-hero{
+    position: absolute;
+    z-index: 9;
+    bottom: 25vh;
+    left: 3%;
+    width: 93%;
+}
+
+#hero .hero-container a{
+    display: inline-block;
+}
+
+#hero .hero-container i{
+    margin-right: 1rem;
+}
+
+#hero .hero-container button{
+    display: flex;
+    justify-items: center;
 }
 
 #hero .trailer-hide{
@@ -342,29 +367,8 @@ header{
     transition: opacity 1s ease;
 }
 
-#hero .row{
-    display: flex;
-    align-items: center;
-    height: 100vh;
-}
-
-#hero .row .hero-container{
-    position: absolute;
-    bottom: 25vh;
-}
-
-#hero .row .hero-container a{
-    display: inline-block;
-}
-
-#hero .row .hero-container button{
-    display: flex;
-    align-items: center;
-    justify-items: center;
-}
-
-#hero .row .hero-container i{
-    margin-right: 1rem;
+#hero h2{
+    margin-bottom: 0;
 }
 
 #hero .title-hero-start{
@@ -381,6 +385,7 @@ header{
     font-family: Arial, Helvetica, sans-serif;
     opacity: 1;
     animation: p-hero 1s ease-in-out 5s;
+    padding: 0 0 1rem;
 }
 
 #hero .p-hero-end{
@@ -391,8 +396,8 @@ header{
 
 #replay-parental{
     position: absolute;
-    bottom: 25vh;
-    right: 0;
+    bottom: 0;
+    right: -6rem;
     display: flex;
 }
 
@@ -457,6 +462,7 @@ header{
 }
 
 .filmes{
+    position: relative;
     z-index: 3;
     margin-top: -13rem;
     padding-top: 5rem;
@@ -596,7 +602,241 @@ footer .disclaimer{
     color: gray;
 }
 
-@media (max-width: 800px){
+@media (max-width: 580px) {
+    html{
+        font-size: .5rem;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    p {
+        padding: 1rem 0;
+        font-size: 1.3rem;
+    }
+
+    .col-4 {
+        width: 100%;
+    }
+    
+    .col-3 {
+        width: 50%;
+    }
+
+    
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .navegar{
+        display: block;
+        cursor: pointer;
+    }
+
+    .main-menu{
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 30rem;
+        z-index: 2;
+        position: absolute;
+        top: 8rem;
+        border-top: 1px solid #fff;
+        transition: all 3s ease 3s;
+    }
+
+    .main-menu li{
+        padding: 1rem;
+        margin-left: 0;
+        background-color: var(--black-transp-2);
+    }
+
+    .main-menu li:hover{
+        background-color: var(--black-transp-1);
+        cursor: pointer;
+    }
+    
+    .main-menu li a{
+        font-size: 1.15rem;
+        color: #fff;
+    }
+
+    .main-menu::before{
+        content: '';
+        border-color: #fff transparent transparent;
+        border-width: .4rem .4rem 0;
+        border-style: solid;
+        display: block;
+        width: .1rem;
+        height: auto;
+        position: absolute;
+        left: 14.5rem;
+        top: -1.5rem;
+        padding-top: 1rem;
+        transform: rotateX(180deg);
+    }
+
+    #hero .hero-container a{
+        display: inline-block;
+    }
+
+    #hero .container-hero{
+        position: absolute;
+        z-index: 9;
+        bottom: 0;
+        left: 3%;
+        width: 93%;
+    }
+    
+    #hero .hero-container i{
+        margin-right: 1rem;
+    }
+    
+    #hero .hero-container button{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
+    
+    #hero .trailer-hide{
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+    
+    #hero h2{
+        margin-bottom: 0;
+    }
+    
+    #hero .title-hero-start{
+        font-size: 5rem;
+        animation: title-hero 1s ease-in-out 5s;
+    }
+    
+    #hero .title-hero-end{
+        font-size: 3rem;
+        transform: translate3d(0, -1rem, 0);
+    }
+    
+    #hero .sinopese{
+        display: none;
+        font-family: Arial, Helvetica, sans-serif;
+        opacity: 1;
+        animation: p-hero 1s ease-in-out 5s;
+        padding: 0 0 1rem;
+    }
+    
+    #hero .p-hero-end{
+        transform: translate3d(0, 6rem, 0);
+        transform-origin: left;
+        visibility: hidden;
+    }
+    
+    #replay-parental{
+        position: absolute;
+        bottom: 0;
+        right: -6rem;
+        display: flex;
+    }
+    
+    #replay-parental p{
+        padding: 0 6rem .0 .7rem;
+        background-color: var(--black-transp-1);
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        border-left: 3px solid #fff;
+    }
+    
+    #replay-parental span{
+        padding: .5rem;
+        margin-left: .5rem;
+        border-radius: .25rem;
+        background-color: red;
+    }
+    
+    #replay-parental button{
+        margin-right: 2rem;
+        background-color: transparent;
+        cursor: pointer;
+        border: 0;
+    }
+    
+    #replay-parental .replay{
+        display: none;
+    }
+    
+    #replay-parental button i{
+        padding: 1rem;
+        border-radius: 50%;
+        color: #fff;
+        border: 1px double #fff;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    
+    #replay-parental i:hover{
+        background-color: #ffffff27;
+        transition: all .3s ease;
+    }
+
+    .filmes {
+        margin-top: 4rem;
+        padding-top: 2rem;
+    }
+
+    .slider {
+        display: inline-flex;
+        margin-left: 2vw;
+    }
+
+    .filmes-slider{
+        width: 45.35vw;
+    }
+
+    .controllers button i {
+        font-size: 1.5rem;
+    }
+
+    footer{
+        margin: 13rem auto 3rem;
+        width: 93%;
+    }
+
+    footer .menu-footer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    footer .social-media i{
+        font-size: 2.5rem;
+    }
+
+    footer .menu-footer a {
+        font-size: 1.6rem;
+    }
+
+
+    @keyframes title-hero {
+        100%{
+            font-size: 3rem;
+            transform: translate3d(0, -1rem, 0);
+        }
+    }
+
+    @keyframes p-hero {
+        100%{
+            transform: translate3d(0, 6rem, 0);
+            transform-origin: left;
+            opacity: 0;
+        }
+    }
+
+}
+
+@media (min-width: 581px) and (max-width: 800px){
 
     html{
         font-size: .5rem;
@@ -673,60 +913,111 @@ footer .disclaimer{
         transform: rotateX(180deg);
     }
 
-    #hero {
-        background: var(--color-dark) url(../img/cover.jpg) no-repeat center center;
-        background-size: cover;
-        min-height: 50vh;
-        margin-top: -4rem;
+    #hero .hero-container a{
+        display: inline-block;
+    }
+
+    #hero .container-hero{
+        position: absolute;
+        z-index: 9;
+        bottom: 5rem;
+        left: 3%;
+        width: 93%;
     }
     
-    #hero i {
-        font-size: 1.2rem;
+    #hero .hero-container i{
+        margin-right: 1rem;
     }
-
-    #hero .row {
-        height: initial;
-        position: relative;
-        height: 50vh;
+    
+    #hero .hero-container button{
+        display: flex;
+        justify-items: center;
+        align-items: center;
     }
-
-    #hero .row .hero-container {
-        position: absolute;
-        bottom: 10rem;
+    
+    #hero .trailer-hide{
+        opacity: 0;
+        transition: opacity 1s ease;
     }
-
-    #hero .title-hero-start {
-        font-size: 5rem;
+    
+    #hero h2{
+        margin-bottom: 0;
+    }
+    
+    #hero .title-hero-start{
+        font-size: 10rem;
         animation: title-hero 1s ease-in-out 5s;
     }
     
-    #hero .title-hero-end {
-        font-size: 3rem;
+    #hero .title-hero-end{
+        font-size: 5rem;
+        transform: translate3d(0, 6rem, 0);
+        margin-bottom: 3rem;
     }
-
-    #hero .trailer {
-        width: 120%;
-        margin-top: -1rem;
-        margin-left: -10%;
+    
+    #hero .sinopese{
+        font-family: Arial, Helvetica, sans-serif;
+        opacity: 1;
+        animation: p-hero 1s ease-in-out 5s;
+        padding: 0 0 1rem;
     }
-
-    #replay-parental {
-        bottom: 13vh;
-        margin-right: -1rem;
+    
+    #hero .p-hero-end{
+        transform: translate3d(0, 6rem, 0);
+        transform-origin: left;
+        visibility: hidden;
     }
-
-    #replay-parental button i {
-        padding: 0.5rem;
-        font-size: 1rem;
+    
+    #replay-parental{
+        position: absolute;
+        bottom: 0;
+        right: -6rem;
+        display: flex;
     }
-
-    #replay-parental p {
-        padding: 0 6rem .0 0.7rem;
-        font-size: 1rem;
+    
+    #replay-parental p{
+        padding: 0 6rem .0 .7rem;
+        background-color: var(--black-transp-1);
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        border-left: 3px solid #fff;
+    }
+    
+    #replay-parental span{
+        padding: .5rem;
+        margin-left: .5rem;
+        border-radius: .25rem;
+        background-color: red;
+    }
+    
+    #replay-parental button{
+        margin-right: 2rem;
+        background-color: transparent;
+        cursor: pointer;
+        border: 0;
+    }
+    
+    #replay-parental .replay{
+        display: none;
+    }
+    
+    #replay-parental button i{
+        padding: 1rem;
+        border-radius: 50%;
+        color: #fff;
+        border: 1px double #fff;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    
+    #replay-parental i:hover{
+        background-color: #ffffff27;
+        transition: all .3s ease;
     }
 
     .filmes {
-        margin-top: -9rem;
+        margin-top: 4rem;
         padding-top: 2rem;
     }
 
@@ -765,8 +1056,16 @@ footer .disclaimer{
 
     @keyframes title-hero {
         100%{
-            font-size: 3rem;
+            font-size: 5rem;
+            transform: translate3d(0, 3rem, 0);
+        }
+    }
+
+    @keyframes p-hero {
+        100%{
             transform: translate3d(0, 6rem, 0);
+            transform-origin: left;
+            opacity: 0;
         }
     }
 
@@ -803,7 +1102,7 @@ footer .disclaimer{
     }
     
     #hero {
-        background: var(--color-dark) url(../img/cover.jpg) no-repeat center center;
+        background: var(--color-dark);
         background-size: cover;
         min-height: 50vh;
         margin-top: -4rem;
@@ -829,23 +1128,24 @@ footer .disclaimer{
     }
 
     #hero .title-hero-start {
-        font-size: 5rem;
+        font-size: 10rem;
         animation: title-hero 1s ease-in-out 5s;
     }
     
     #hero .title-hero-end {
-        font-size: 3rem;
+        font-size: 6rem;
+        transform: translate3d(0, 3rem, 0);
     }
 
     #hero .trailer {
         width: 150%;
-        margin-top: -6rem;
+        margin-top: -10rem;
         margin-left: -25%;
     }
 
     #replay-parental {
-        bottom: 19vh;
-        margin-right: -3rem;
+        bottom: 0;
+        margin-right: 1rem;
     }
 
     #replay-parental button i {
@@ -878,8 +1178,16 @@ footer .disclaimer{
 
     @keyframes title-hero {
         100%{
-            font-size: 3rem;
+            font-size: 6rem;
+            transform: translate3d(0, 3rem, 0);
+        }
+    }
+
+    @keyframes p-hero {
+        100%{
             transform: translate3d(0, 6rem, 0);
+            transform-origin: left;
+            opacity: 0;
         }
     }
 

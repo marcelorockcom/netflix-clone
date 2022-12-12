@@ -55,7 +55,7 @@ function hideMenus(el) {
 }
 
 /* Hero Section */
-const heroTrailer = document.querySelector('#hero .trailer')
+const heroTrailer = document.querySelector('#hero video')
 const heroTitle = document.querySelector('#hero h2')
 const heroSinopse = document.querySelector('#hero .sinopese')
 const heroReplay = document.querySelector('#hero .replay')
